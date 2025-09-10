@@ -235,6 +235,9 @@ CPP_SOURCES += $(addsuffix .cpp, $(addprefix $(MODULE_DIR)/, $(CPP_MODULES)))
 C_SOURCES += $(addsuffix .c, $(addprefix $(MODULE_DIR)/, $(C_MODULES)))
 C_SOURCES += core/startup_stm32h750xx.c
 
+# CMSIS-DSP sources commonly needed for audio applications
+C_SOURCES += $(wildcard Drivers/CMSIS-DSP/Source/**/*.c)
+
 #STARTUP_PATH = Drivers/CMSIS/Device/ST/STM32H7xx/Source/Templates/gcc
 # ASM sources
 #ASM_SOURCES =  \
@@ -304,6 +307,8 @@ C_INCLUDES = \
 -I$(MODULE_DIR)/usbd \
 -I$(MODULE_DIR)/usbh \
 -IDrivers/CMSIS_5/CMSIS/Core/Include \
+-IDrivers/CMSIS-DSP/Include \
+-IDrivers/CMSIS-DSP/PrivateInclude \
 -IDrivers/CMSIS-Device/ST/STM32H7xx/Include \
 -IDrivers/STM32H7xx_HAL_Driver/Inc \
 -IDrivers/STM32H7xx_HAL_Driver/Inc/Legacy \
