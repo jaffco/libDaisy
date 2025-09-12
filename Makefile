@@ -257,6 +257,7 @@ CP = $(GCC_PATH)/$(PREFIX)objcopy
 SZ = $(GCC_PATH)/$(PREFIX)size
 AR = $(GCC_PATH)/$(PREFIX)ar
 GDB = $(GCC_PATH)/$(PREFIX)gdb
+RM = rm
 else
 CC = $(PREFIX)gcc
 CXX = $(PREFIX)g++
@@ -265,6 +266,7 @@ CP = $(PREFIX)objcopy
 SZ = $(PREFIX)size
 AR = $(PREFIX)ar
 GDB = $(PREFIX)gdb
+RM = rm
 endif
 HEX = $(CP) -O ihex
 BIN = $(CP) -O binary -S
@@ -383,7 +385,80 @@ $(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
 	$(AS) -c $(ASFLAGS) $< -o $@ -MD -MP -MF $(BUILD_DIR)/$(notdir $(<:.s =.dep))
 
 $(BUILD_DIR)/$(TARGET).a: $(SORTED_OBJECTS) Makefile
-	$(AR) -r $@ $(SORTED_OBJECTS)
+	@echo "Creating archive with $(words $(SORTED_OBJECTS)) objects..."
+	@$(RM) -f $@
+	$(AR) -r $@ $(wordlist 1,50,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 51,100,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 101,150,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 151,200,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 201,250,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 251,300,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 301,350,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 351,400,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 401,450,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 451,500,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 501,550,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 551,600,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 601,650,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 651,700,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 701,750,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 751,800,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 801,850,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 851,900,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 901,950,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 951,1000,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1001,1050,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1051,1100,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1101,1150,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1151,1200,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1201,1250,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1251,1300,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1301,1350,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1351,1400,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1401,1450,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1451,1500,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1501,1550,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1551,1600,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1601,1650,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1651,1700,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1701,1750,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1751,1800,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1801,1850,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1851,1900,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1901,1950,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 1951,2000,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2001,2050,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2051,2100,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2101,2150,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2151,2200,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2201,2250,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2251,2300,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2301,2350,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2351,2400,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2401,2450,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2451,2500,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2501,2550,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2551,2600,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2601,2650,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2651,2700,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2701,2750,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2751,2800,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2801,2850,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2851,2900,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2901,2950,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 2951,3000,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 3001,3050,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 3051,3100,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 3101,3150,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 3151,3200,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 3201,3250,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 3251,3300,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 3301,3350,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 3351,3400,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 3401,3450,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 3451,3500,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 3501,3550,$(SORTED_OBJECTS))
+	$(AR) -r $@ $(wordlist 3551,3600,$(SORTED_OBJECTS))
 
 $(BUILD_DIR):
 	mkdir $@
@@ -392,7 +467,7 @@ $(BUILD_DIR):
 # clean up
 #######################################
 clean:
-	-rm -fR $(BUILD_DIR)
+	-$(RM) -rf $(BUILD_DIR)
 #######################################
 
 # dependencies
