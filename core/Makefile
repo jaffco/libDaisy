@@ -297,6 +297,16 @@ $(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 	$(BIN) $< $@
 
+$(BUILD_DIR)/%.asm: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
+	arm-none-eabi-objdump -S $< > $@
+
+disasm: $(BUILD_DIR)/$(TARGET).asm
+	@echo "Assembly with source code written to: $(BUILD_DIR)/$(TARGET).asm"
+
+disasm-no-src: $(BUILD_DIR)/$(TARGET).elf
+	arm-none-eabi-objdump -d $(BUILD_DIR)/$(TARGET).elf > $(BUILD_DIR)/$(TARGET)_no_src.asm
+	@echo "Assembly (without source) written to: $(BUILD_DIR)/$(TARGET)_no_src.asm"
+
 $(BUILD_DIR):
 	mkdir $@
 
