@@ -274,6 +274,7 @@ AudioHandle::Impl::SetSampleRate(SaiHandle::Config::SampleRate samplerate)
 // wasn't possible due to the different parameter/return types for each function.
 void AudioHandle::Impl::InternalCallback(int32_t* in, int32_t* out, size_t size)
 {
+    PROFILE_BEGIN("AudioHandle::InternalCallback pre-processing");
     // Convert from sai format to float, and call user callback
     size_t                      chns;
     SaiHandle::Config::BitDepth bd;
@@ -424,7 +425,9 @@ void AudioHandle::Impl::InternalCallback(int32_t* in, int32_t* out, size_t size)
                 break;
             default: break;
         }
+        PROFILE_END("AudioHandle::InternalCallback pre-processing");
         cb(fin, fout, size / 2);
+        PROFILE_BEGIN("AudioHandle::InternalCallback post-processing");
         // Reinterleave and scale
         switch(bd)
         {
@@ -478,6 +481,7 @@ void AudioHandle::Impl::InternalCallback(int32_t* in, int32_t* out, size_t size)
                 break;
             default: break;
         }
+        PROFILE_END("AudioHandle::InternalCallback post-processing");
     }
 }
 
