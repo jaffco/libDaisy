@@ -116,7 +116,7 @@ SECTIONS
 		_edata = .;
 
 		PROVIDE(__data_end__ = _edata);
-	} > DTCMRAM AT > SRAM
+	} > SRAM AT > SRAM
 
 	_sidata = LOADADDR(.data);
 
@@ -133,7 +133,7 @@ SECTIONS
 		_ebss = .;
 
 		PROVIDE(__bss_end__ = _ebss);
-	} > DTCMRAM
+	} > SRAM
 
 	.dtcmram_bss (NOLOAD) :
 	{
