@@ -88,6 +88,16 @@ class SaiHandle
             RECEIVE,
         };
 
+        /** Serial data protocol / justification.
+         ** DEFAULT preserves legacy behavior: I2S for 16/32-bit, MSB-justified for 24-bit.
+         */
+        enum class Protocol
+        {
+            DEFAULT,
+            I2S,
+            LEFT_JUSTIFIED,
+        };
+
         Peripheral periph;
         struct
         {
@@ -97,6 +107,7 @@ class SaiHandle
         BitDepth   bit_depth;
         Sync       a_sync, b_sync;
         Direction  a_dir, b_dir;
+        Protocol   protocol = Protocol::DEFAULT;
     };
 
     /** Return values for SAI functions */

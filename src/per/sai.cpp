@@ -166,6 +166,16 @@ SaiHandle::Result SaiHandle::Impl::Init(const SaiHandle::Config& config)
             protocol = SAI_I2S_STANDARD;
             break;
     }
+    // Explicit protocol override (independent of bit depth)
+    switch(config.protocol)
+    {
+        case Config::Protocol::I2S: protocol = SAI_I2S_STANDARD; break;
+        case Config::Protocol::LEFT_JUSTIFIED:
+            protocol = SAI_I2S_MSBJUSTIFIED;
+            break;
+        case Config::Protocol::DEFAULT:
+        default: break;
+    }
 
     // Generic Inits that we don't have API control over.
     // A
